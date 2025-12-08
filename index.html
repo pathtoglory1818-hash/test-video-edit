@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIAM BLACKWOOD | Professional Video Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- CSS Styling Block --- */
+        
+        /* --- Global Reset & Variables --- */
+        :root {
+            --color-dark: #121212;
+            --color-medium: #1f1f1f;
+            --color-light: #f5f5f5;
+            --color-accent: #007bff; /* Bright blue for CTA */
+            --color-hover: #0056b3;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --color-whatsapp: #25D366; /* WhatsApp Green */
+        }
+
+        /* Fallback fonts for clean typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-hover);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-light);
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1em;
+            text-transform: uppercase;
+        }
+
+        .section-description {
+            text-align: center;
+            margin-bottom: 2em;
+            color: #aaa;
+        }
+
+        /* --- Buttons (CTAs) --- */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px 10px 10px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .primary {
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            border: 2px solid var(--color-accent);
+        }
+
+        .primary:hover {
+            background-color: var(--color-hover);
+            border-color: var(--color-hover);
+        }
+
+        .secondary {
+            background-color: transparent;
+            color: var(--color-light);
+            border: 2px solid var(--color-light);
+        }
+
+        .secondary:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+        
+        /* NEW: WhatsApp Button Styling */
+        .whatsapp-button {
+            background-color: var(--color-whatsapp);
+            color: var(--color-dark); /* Using dark text for contrast */
+            border: 2px solid var(--color-whatsapp);
+            padding: 15px 30px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            margin: 30px auto 0;
+        }
+
+        .whatsapp-button i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #1DA851; /* Darker green on hover */
+            border-color: #1DA851;
+        }
+
+        /* --- Header & Navigation (UPDATED FOR CLEAR BLUR) --- */
+        header {
+            /* Using semi-transparent color and blur for glass effect */
+            background-color: rgba(31, 31, 31, 0.8); /* Semi-transparent dark background */
+            backdrop-filter: blur(10px); /* The main blur effect */
+            
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li a {
+            color: var(--color-light);
+            margin-left: 20px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            height: 80vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        /* NEW: Styling for the video background to cover the whole hero section */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            /* Optional: Add a dark overlay to ensure text readability */
+            filter: brightness(0.4); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 50px; 
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-top: 0.1em;
+            margin-bottom: 0.5em;
+            line-height: 1.1;
+        }
+
+        .hero-content .subtitle {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* --- Content Sections --- */
+        .portfolio-section, .services-section, .about-section, .contact-section {
+            padding: 80px 0;
+            background-color: var(--color-dark);
+        }
+        
+        .services-section {
+            background-color: var(--color-medium);
+        }
+
+        /* --- Portfolio Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-item {
+            background-color: var(--color-medium);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-item img, .project-item video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 15px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .project-info p {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Services Section --- */
+        .service-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .service-card {
+            flex: 1;
+            padding: 30px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: var(--color-dark);
+            max-width: 350px;
+            transition: background-color 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: #2a2a2a;
+        }
+
+        .service-card i {
+            font-size: 3em;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4em;
+        }
+
+        /* --- About & Testimonials --- */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            padding: 0 50px;
+        }
+
+        .bio-card {
+            flex: 2;
+        }
+
+        .testimonial-card {
+            flex: 1;
+            background-color: var(--color-medium);
+            padding: 30px;
+            border-left: 5px solid var(--color-accent);
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .testimonial-card i {
+            font-size: 1.5em;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card footer {
+            margin-top: 15px;
+            font-style: normal;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        /* --- Contact Section (Updated) --- */
+        .contact-content-simple {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: var(--color-medium);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
+        .contact-content-simple p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-medium);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+            font-size: 1.5em;
+            color: var(--color-light);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 3em;
+            }
+            .service-grid {
+                flex-wrap: wrap;
+            }
+            .service-card {
+                flex: 1 1 45%;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 10px;
+            }
+            .hero-content {
+                padding-left: 20px;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .cta-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-grid, .about-content {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .service-card {
+                max-width: 100%;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .social-links {
+                margin-top: 15px;
+            }
+            .project-item video {
+                width: 100%;
+                height: 220px; /* Matches the old image height */
+                object-fit: cover;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">LIAM BLACKWOOD</div>
+            <nav>
+                <ul>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            
+            <video autoplay muted loop class="hero-video">
+                <source src="background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container hero-content">
+                <p class="subtitle">Bringing Your Vision to Life</p>
+                <h1>Professional Video Editing Services</h1>
+                <div class="cta-group">
+                    <a href="#portfolio" class="cta-button primary">VIEW PORTFOLIO</a>
+                    <a href="#contact" class="cta-button secondary">GET A QUOTE</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2>Recent Projects</h2>
+                <p class="section-description">High-impact work across various industries and styles.</p>
+
+                <div class="project-grid">
+                    
+                    <div class="project-item">
+                        <video controls muted poster="[Thumbnail Image URL 1]">
+                            <source src="project1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="project-info">
+                            <h3>Cinematic Teaser</h3>
+                            <p>Role: Editing & Color Grading | Client: Auto Corp</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <video controls muted poster="[Thumbnail Image URL 2]">
+                            <source src="project2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="project-info">
+                            <h3>Documentary Short</h3>
+                            <p>Role: Sound Design & Final Mix | Project: Wild Rivers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <video controls muted poster="[Thumbnail Image URL 3]">
+                            <source src="project3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="project-info">
+                            <h3>Social Media Reel</h3>
+                            <p>Role: Motion Graphics & Cut Downs | Client: Fitness Pro</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="text-center">
+                    <a href="#" class="cta-button secondary">SEE ALL WORK</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>What I Offer</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <i class="fas fa-video"></i>
+                        <h3>Commercial Editing</h3>
+                        <p>High-energy promotional content, corporate videos, and online advertisements.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-film"></i>
+                        <h3>Cinematic Storytelling</h3>
+                        <p>Narrative film editing, shorts, documentaries, and full-feature assistance.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Color Grading & FX</h3>
+                        <p>Professional color correction (DaVinci Resolve) and visual effects integration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container about-content">
+                <div class="bio-card">
+                    <h2>Why Work With Me?</h2>
+                    <p>I'm **Liam Blackwood**, a dedicated editor with **8+ years of experience** specializing in high-end post-production using Adobe Premiere Pro, After Effects, and DaVinci Resolve. My focus is on delivering polished, story-driven content on time and within budget.</p>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Liam's attention to detail transformed our project. The workflow was seamless and the final video looked incredible."</p>
+                    <footer>— Sarah J., Marketing Director</footer>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container contact-content-simple">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Have an urgent project? Click below to chat directly on WhatsApp for a fast response and project discussion.</p>
+                
+                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20video%20editing%20project." 
+                   class="cta-button whatsapp-button" target="_blank">
+                   <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <p style="margin-top: 20px;">Or, if you prefer email, reach me at: <a href="mailto:liam.editor@example.com">liam.editor@example.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Liam Blackwood. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Vimeo"><i class="fab fa-vimeo"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
