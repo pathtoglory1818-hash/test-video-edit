@@ -3,580 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>its_nutrow | Professional Video Editor</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <title>Malda College DCSA | Access Granted</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'matrix-green': '#00ff41',
+                        'electric-blue': '#0070f3',
+                        'dark-void': '#000000',
+                        'alert-red': '#FF4136',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 1.5s ease-in-out infinite alternate',
+                        'pulse-border': 'pulse-border 2.5s infinite ease-out',
+                        'animate-blue-fire': 'blue-fire 0.7s infinite alternate'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { 'box-shadow': '0 0 5px rgba(0, 112, 243, 0.5)' },
+                            '100%': { 'box-shadow': '0 0 20px rgba(0, 112, 243, 0.8), 0 0 30px rgba(0, 112, 243, 0.4)' },
+                        },
+                        'pulse-border': {
+                            '0%': { 'box-shadow': '0 0 0 0 rgba(0, 112, 243, 0.8)' }, 
+                            '70%': { 'box-shadow': '0 0 0 20px rgba(0, 112, 243, 0)' }, 
+                            '100%': { 'box-shadow': '0 0 0 0 rgba(0, 112, 243, 0)' },
+                        },
+                        'blue-fire': {
+                            '0%': { 'box-shadow': '0 0 15px #0070f3, 0 0 30px #0070f3, 0 0 45px #0070f3, 0 0 60px #0070f3' },
+                            '50%': { 'box-shadow': '0 0 20px #0070f3, 0 0 40px #0070f3, 0 0 60px #0070f3, 0 0 80px #0070f3' },
+                            '100%': { 'box-shadow': '0 0 15px #0070f3, 0 0 30px #0070f3, 0 0 45px #0070f3, 0 0 60px #0070f3' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- CSS Styling Block --- */
-        
-        /* --- Global Reset & Variables --- */
-        :root {
-            /* NEW LIGHT THEME COLORS */
-            --color-background: #FFE6F0; /* Light Pink Background */
-            --color-text: #121212;      /* Dark Text */
-            --color-card-bg: #FFFFFF;   /* White for Inner Elements/Cards */
-            
-            /* Theme Accent Colors */
-            --color-accent: #007bff; /* Bright blue for CTA */
-            --color-hover: #000080;
-            --font-heading: 'Poppins', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-            --color-whatsapp: #25D366; /* WhatsApp Green */
-        }
-
-        /* Fallback fonts for clean typography */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* BODY: Sets the new light pink background and dark text color */
+        /* Base Dark Background */
         body {
-            font-family: var(--font-body);
-            background-color: var(--color-background);
-            color: var(--color-text); 
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            background-color: theme('colors.dark-void');
+            color: white;
+            font-family: 'Inter', sans-serif;
+            position: relative;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: var(--color-hover);
-        }
-
-        h1, h2, h3 {
-            font-family: var(--font-heading);
-            color: var(--color-text); /* Dark headings */
-            margin-bottom: 0.5em;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 1em;
-            text-transform: uppercase;
-        }
-
-        .section-description {
-            text-align: center;
-            margin-bottom: 2em;
-            color: #555; /* Dark gray for secondary text */
-        }
-
-        /* --- Buttons (CTAs) --- */
-        .cta-button {
-            display: inline-block;
-            padding: 12px 25px;
-            margin: 10px 10px 10px 0;
-            text-transform: uppercase;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .primary {
-            background-color: var(--color-accent);
-            color: var(--color-card-bg); /* White text on blue accent */
-            border: 2px solid var(--color-accent);
-        }
-
-        .primary:hover {
-            background-color: var(--color-hover);
-            border-color: var(--color-hover);
-        }
-
-        .secondary {
-            background-color: transparent;
-            color: var(--color-text); /* Dark text on light background */
-            border: 2px solid var(--color-text);
-        }
-
-        .secondary:hover {
-            background-color: var(--color-text);
-            color: var(--color-card-bg);
-        }
-        
-        /* WhatsApp Button Styling */
-        .whatsapp-button {
-            background-color: var(--color-whatsapp);
-            color: var(--color-text); 
-            border: 2px solid var(--color-whatsapp);
-            padding: 15px 30px;
-            font-size: 1.2em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: fit-content;
-            margin: 30px auto 0;
-        }
-
-        .whatsapp-button i {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-
-        .whatsapp-button:hover {
-            background-color: #1DA851; 
-            border-color: #1DA851;
-        }
-
-        /* --- Header & Navigation (UPDATED FOR LIGHT BLUR) --- */
-        header {
-            /* Light semi-transparent color and blur for glass effect */
-            background-color: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(10px); 
-            
-            padding: 15px 0;
-            position: sticky;
+        /* Video Container for Intro Sequence */
+        #intro-video-container {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--color-text);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li a {
-            color: var(--color-text); /* Dark links */
-            margin-left: 20px;
-            text-transform: uppercase;
-            font-size: 0.9em;
-        }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            position: relative;
-            height: 80vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-            overflow: hidden;
-        }
-
-        /* Video background styling */
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            /* Dark overlay remains to ensure white text is readable */
-            filter: brightness(0.4); 
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding-left: 50px; 
-        }
-
-        /* Hero Text (Kept white for contrast against dark video) */
-        .hero-content h1 {
-            font-size: 4em;
-            color: var(--color-card-bg); /* White */
-        }
-
-        .hero-content .subtitle {
-            color: var(--color-accent);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        /* --- Content Sections (Background set to pink or light) --- */
-        .portfolio-section, .about-section, .contact-section {
-            padding: 80px 0;
-            background-color: var(--color-background); 
-        }
-        
-        /* Slightly different background for visual break */
-        .services-section {
-            background-color: rgba(255, 255, 255, 0.7); /* Light, transparent white */
-        }
-
-        /* --- Portfolio Section --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .project-item {
-            background-color: var(--color-card-bg); /* White card */
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-        }
-
-        .project-item:hover {
-            transform: translateY(-8px);
-        }
-
-        .project-item img, .project-item video {
+            left: 0;
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-info {
-            padding: 15px;
-        }
-
-        .project-info h3 {
-            margin-bottom: 5px;
-            font-size: 1.2em;
-        }
-
-        .project-info p {
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* --- Services Section --- */
-        .service-grid {
+            height: 100%;
+            background-color: black;
+            z-index: 1000;
             display: flex;
-            gap: 30px;
             justify-content: center;
-            text-align: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 1;
+            transition: opacity 0.5s ease;
         }
 
-        .service-card {
-            flex: 1;
-            padding: 30px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: var(--color-card-bg); /* White card */
-            max-width: 350px;
-            transition: background-color 0.3s;
-        }
-
-        .service-card:hover {
-            background-color: #f8f8f8;
-        }
-
-        .service-card i {
-            font-size: 3em;
-            color: var(--color-accent);
-            margin-bottom: 15px;
-        }
-
-        .service-card h3 {
-            font-size: 1.4em;
-        }
-
-        /* --- About & Testimonials --- */
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            padding: 0 50px;
-        }
-
-        .bio-card {
-            flex: 2;
-        }
-
-        .testimonial-card {
-            flex: 1;
-            background-color: var(--color-card-bg); /* White card */
-            padding: 30px;
-            border-left: 5px solid var(--color-accent);
-            border-radius: 8px;
-            font-style: italic;
-        }
-
-        .testimonial-card i {
-            font-size: 1.5em;
-            color: var(--color-accent);
-            margin-bottom: 10px;
-        }
-
-        .testimonial-card footer {
-            margin-top: 15px;
-            font-style: normal;
-            color: #555;
-            font-weight: 300;
-        }
-
-        /* --- Contact Section --- */
-        .contact-content-simple {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            background-color: var(--color-card-bg); /* White card */
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        #intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         
-        .contact-content-simple p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
+        /* Canvas for background animation */
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
-
-        /* --- Footer --- */
-        footer {
-            background-color: #F8F8F8; /* Light gray for separation */
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9em;
-            border-top: 1px solid #ccc;
+        /* Ensure content is readable and above the canvas */
+        .content-layer {
+            position: relative;
+            z-index: 10;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Neon Text Effect for Headings */
+        .neon-text {
+            text-shadow: 0 0 5px theme('colors.electric-blue'), 0 0 10px theme('colors.electric-blue'), 0 0 15px theme('colors.electric-blue');
         }
 
-        .social-links a {
-            margin-left: 15px;
-            font-size: 1.5em;
-            color: var(--color-text);
+        /* Neon Blue Text Effect */
+        .neon-blue-text {
+            color: theme('colors.electric-blue');
+            text-shadow: 
+                0 0 5px theme('colors.electric-blue'),
+                0 0 15px theme('colors.electric-blue'),
+                0 0 30px rgba(0, 112, 243, 0.6),
+                0 0 45px rgba(0, 112, 243, 0.4);
+            animation: pulse-neon 2s infinite alternate;
         }
 
-        .social-links a:hover {
-            color: var(--color-accent);
+        @keyframes pulse-neon {
+            0% {
+                text-shadow: 
+                    0 0 5px theme('colors.electric-blue'),
+                    0 0 15px theme('colors.electric-blue'),
+                    0 0 30px rgba(0, 112, 243, 0.6),
+                    0 0 45px rgba(0, 112, 243, 0.4);
+            }
+            100% {
+                text-shadow: 
+                    0 0 8px theme('colors.electric-blue'),
+                    0 0 20px theme('colors.electric-blue'),
+                    0 0 40px rgba(0, 112, 243, 0.8),
+                    0 0 60px rgba(0, 112, 243, 0.5);
+            }
         }
 
-        /* --- Media Queries for Responsiveness --- */
-        @media (max-width: 900px) {
-            .hero-content h1 {
-                font-size: 3em;
-            }
-            .service-grid {
-                flex-wrap: wrap;
-            }
-            .service-card {
-                flex: 1 1 45%;
-            }
+        /* Card Glow */
+        .card-glow {
+            border: 1px solid theme('colors.electric-blue');
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.5);
+            transition: all 0.3s ease;
         }
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            nav ul {
-                margin-top: 10px;
-            }
-            .hero-content {
-                padding-left: 20px;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 2.5em;
-            }
-            .cta-group {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .service-grid, .about-content {
-                flex-direction: column;
-                padding: 0 20px;
-            }
-            .service-card {
-                max-width: 100%;
-            }
-            .footer-content {
-                flex-direction: column;
-            }
-            .social-links {
-                margin-top: 15px;
-            }
-            .project-item video {
-                width: 100%;
-                height: 220px; 
-                object-fit: cover;
-                display: block;
-            }
+        .card-glow:hover {
+            box-shadow: 0 0 25px rgba(0, 112, 243, 0.8), 0 0 40px rgba(0, 112, 243, 0.6);
+            transform: translateY(-5px);
+        }
+
+        /* --- START HERE Button Gradient Style --- */
+        .start-here-gradient {
+            background: linear-gradient(180deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 15px theme('colors.matrix-green'), 0 0 5px theme('colors.matrix-green');
+        }
+
+        /* Hover effect for the START HERE button */
+        .start-here-gradient:hover {
+            background: linear-gradient(180deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 25px theme('colors.matrix-green'), 0 0 10px theme('colors.matrix-green');
+            transform: scale(1.02);
+        }
+
+        /* --- Custom Logo FAB Style (Pulsing Neon Blue) --- */
+        .logo-fab-glow {
+            border: 2px solid theme('colors.electric-blue');
+            box-shadow: 0 0 15px theme('colors.electric-blue'), 0 0 30px rgba(0, 112, 243, 0.6);
+            animation: pulse-border 2.5s infinite ease-out; /* Uses the existing pulse-border animation */
+        }
+        .logo-fab-glow:hover {
+            box-shadow: 0 0 20px theme('colors.electric-blue'), 0 0 40px rgba(0, 112, 243, 0.8);
+            animation: none; /* Stop pulsing on hover */
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-    <header>
-        <div class="container header-content">
-            <div class="logo">its_nutrow</div>
-            <nav>
-                <ul>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="intro-video-container" class="relative">
+        <video id="intro-video" playsinline>
+            <source src="doc.mp4" type="video/mp4">
+            Your browser does support the video tag.
+        </video>
+        <audio id="intro-audio" loop>
+            <source src="doc.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
 
-    <main>
-        <section id="hero" class="hero-section">
-            
-            <video autoplay muted loop class="hero-video">
-                <source src="background.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            
-            <div class="container hero-content">
-                <p class="subtitle">Bringing Your Vision to Life</p>
-                <h1>Professional Video Editing Services</h1>
-                <div class="cta-group">
-                    <a href="#portfolio" class="cta-button primary">VIEW PORTFOLIO</a>
-                    <a href="#contact" class="cta-button secondary">GET A QUOTE</a>
-                </div>
+        <button id="start-button" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-100 text-white bg-electric-blue/90 hover:bg-electric-blue px-6 py-3 text-lg sm:px-8 sm:py-4 sm:text-xl rounded-lg font-bold tracking-widest transition duration-300 shadow-xl neon-text animate-pulse-border animate-blue-fire w-fit h-fit">
+            INITIATE ACCESS SEQUENCE
+        </button>
+        
+        <button id="skip-button" class="absolute bottom-10 right-10 z-10 text-white bg-alert-red hover:bg-red-700 px-6 py-2 rounded-lg font-bold transition duration-300 shadow-xl" style="display: none;">
+            Skip Intro (System Override)
+        </button>
+    </div>
+
+    <canvas id="background-canvas"></canvas>
+
+    <div class="content-layer" style="display: none;">
+
+        <header class="p-4 border-b border-electric-blue/50 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-extrabold text-electric-blue tracking-widest neon-text">
+                    MALDA COLLEGE <span class="text-matrix-green/70">DCSA</span>
+                </h1>
+                <nav class="hidden md:flex space-x-6 text-sm">
+                    <a href="#welcome" class="text-gray-300 hover:text-matrix-green transition duration-300">/HOME</a>
+                    <a href="#curriculum" class="text-gray-300 hover:text-matrix-green transition duration-300">/PROGRAMS</a>
+                    <a href="#mission" class="text-gray-300 hover:text-matrix-green transition duration-300">/MISSION</a>
+                    <a href="#contact" class="text-gray-300 hover:text-matrix-green transition duration-300">/CONNECT</a>
+                </nav>
+                <button class="md:hidden text-electric-blue focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
-        </section>
+        </header>
 
-        <section id="portfolio" class="portfolio-section">
-            <div class="container">
-                <h2>Recent Projects</h2>
-                <p class="section-description">High-impact work across various industries and styles.</p>
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
 
-                <div class="project-grid">
-                    
-                    <div class="project-item">
-                        <video controls muted poster="[Thumbnail Image URL 1]">
-                            <source src="project1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="project-info">
-                            <h3>Cinematic Teaser</h3>
-                            <p>Role: Editing & Color Grading | Client: Auto Corp</p>
+            <section id="welcome" class="text-center pt-16 pb-24 relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center z-10">
+                    <div class="w-72 h-72 sm:w-96 sm:h-96 bg-electric-blue/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
+                </div>
+
+                <div class="relative z-20">
+                    <p class="text-lg sm:text-xl font-mono mb-4 animate-bounce-in neon-blue-text">
+                        > STATUS: ONLINE | INITIATE SEQUENCE: FRESHER 2k26
+                    </p>
+                    <h2 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-tight uppercase neon-text">
+                        <span class="block">Welcome to</span>
+                        <span class="block">Malda college</span>
+                        <span class="text-electric-blue">fresher party</span>
+                    </h2>
+                    <p class="text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto mb-10">
+                        You have accessed the central hub for the Department of Computer Science and Applications, Malda College. Your digital journey begins now.
+                    </p>
+                    <a href="https://t.me/addlist/QGc3t_XR4TkzN2Nl" class="inline-block px-10 py-4 bg-electric-blue text-dark-void font-bold text-lg rounded-full shadow-lg hover:bg-cyan-400 transition duration-300 transform hover:scale-105 animate-glow">
+                        ACCESS GRANTED
+                    </a>
+                </div>
+            </section>
+
+            <section id="curriculum" class="pt-12">
+                <h3 class="text-4xl font-bold text-center mb-16 uppercase tracking-wider text-electric-blue/90">
+                    // CORE MODULES
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <div class="p-6 bg-slate-800/50 rounded-xl card-glow backdrop-blur-sm">
+                        <div class="text-matrix-green mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9"><path d="M6 16.5l-2-2.5 2-2.5"/><path d="M12 21v-4"/><path d="M18 16.5l2-2.5-2-2.5"/><path d="M15 21v-8"/><path d="M9 21v-8"/><path d="M12 3v3"/><path d="M8 12h8"/><path d="M15 3h6v4h-6z"/></svg>
+                        </div>
+                        <h4 class="text-2xl font-semibold mb-3 text-electric-blue">Data Streams (Coding)</h4>
+                        <p class="text-gray-400 text-sm">
+                            Master high-level programming languages and develop optimized algorithms. Initial focus on C/C++ and Python for foundational efficiency.
+                        </p>
+                        <span class="mt-4 inline-block text-matrix-green text-xs font-mono">STATUS: ACTIVE</span>
+                    </div>
+
+                    <div class="p-6 bg-slate-800/50 rounded-xl card-glow backdrop-blur-sm">
+                        <div class="text-matrix-green mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9"><path d="M12 2v20"/><path d="M17 5H7"/><path d="M17 19H7"/><path d="M15 9H9"/><path d="M15 15H9"/></svg>
+                        </div>
+                        <h4 class="text-2xl font-semibold mb-3 text-electric-blue">Neural Net Simulation</h4>
+                        <p class="text-gray-400 text-sm">
+                            Explore the frontier of Artificial Intelligence and Machine Learning. Design and train predictive models for real-world data analysis.
+                        </p>
+                        <span class="mt-4 inline-block text-matrix-green text-xs font-mono">STATUS: PENDING UPGRADE</span>
+                    </div>
+
+                    <div class="p-6 bg-slate-800/50 rounded-xl card-glow backdrop-blur-sm">
+                        <div class="text-matrix-green mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.23a2 2 0 0 0 2-1.72l.44-4.23a2 2 0 0 0-.27-1.92L19 9.7V9z"/></svg>
+                        </div>
+                        <h4 class="text-2xl font-semibold mb-3 text-electric-blue">Cybernetic Systems</h4>
+                        <p class="text-gray-400 text-sm">
+                            Dissect the architecture of global networks and security protocols. Learn to build and defend distributed systems and cloud infrastructure.
+                        </p>
+                        <span class="mt-4 inline-block text-matrix-green text-xs font-mono">STATUS: ACTIVE</span>
+                    </div>
+
+                    <div class="p-6 bg-slate-800/50 rounded-xl card-glow backdrop-blur-sm">
+                        <div class="text-matrix-green mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9"><path d="M12 22a4 4 0 0 0 0-8c2.25 0 4-1.75 4-4s-1.75-4-4-4-4 1.75-4 4c0 2.5 1.75 4 4 4zm-8 4h8"/><path d="M12 12v-2"/></svg>
+                        </div>
+                        <h4 class="text-2xl font-semibold mb-3 text-electric-blue">Quantum Labs</h4>
+                        <p class="text-gray-400 text-sm">
+                            Engage in cutting-edge research projects. Access specialized lab environments for hardware, robotics, and advanced computing simulations.
+                        </p>
+                        <span class="mt-4 inline-block text-matrix-green text-xs font-mono">STATUS: CRITICAL</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mission" class="pt-12 bg-slate-900/40 p-10 rounded-2xl shadow-2xl border border-matrix-green/30">
+                <div class="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
+                    <div class="flex-shrink-0 text-matrix-green animate-pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-16 h-16"><path d="M20 7h-2.95a2 2 0 0 1-1.42-.59L12 4l-3.63 2.41a2 2 0 0 1-1.42.59H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-electric-blue">
+                            <span class="font-mono text-matrix-green">//</span> CORE PROTOCOL
+                        </h3>
+                        <p class="text-gray-300 text-lg">
+                            Our mission is to decode complexity and engineer the future. We are dedicated to translating theoretical knowledge into practical, high-impact digital solutions. Malda DCSA is not just a department; it's a launchpad for **System Architects**, **Code Scientists**, and the next generation of **Tech Innovators**.
+                        </p>
+                        <div class="mt-4 border-l-4 border-matrix-green pl-4">
+                            <p class="text-sm font-mono text-gray-500">
+                                [OBJECTIVE: MAXIMIZE INTELLECTUAL OUTPUT]
+                            </p>
                         </div>
                     </div>
-                    
-                    <div class="project-item">
-                        <video controls muted poster="[Thumbnail Image URL 2]">
-                            <source src="project2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="project-info">
-                            <h3>Documentary Short</h3>
-                            <p>Role: Sound Design & Final Mix | Project: Wild Rivers</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-item">
-                        <video controls muted poster="[Thumbnail Image URL 3]">
-                            <source src="project3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="project-info">
-                            <h3>Social Media Reel</h3>
-                            <p>Role: Motion Graphics & Cut Downs | Client: Fitness Pro</p>
-                        </div>
-                    </div>
-                    
                 </div>
-                <div class="text-center">
-                    <a href="#" class="cta-button secondary">SEE ALL WORK</a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="services" class="services-section">
-            <div class="container">
-                <h2>What I Offer</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <i class="fas fa-video"></i>
-                        <h3>Commercial Editing</h3>
-                        <p>High-energy promotional content, corporate videos, and online advertisements.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-film"></i>
-                        <h3>Cinematic Storytelling</h3>
-                        <p>Narrative film editing, shorts, documentaries, and full-feature assistance.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-palette"></i>
-                        <h3>Color Grading & FX</h3>
-                        <p>Professional color correction (Capcut) and visual effects integration.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container about-content">
-                <div class="bio-card">
-                    <h2>Why Work With Me?</h2>
-                    <p>I'm **its_nutrow**, a dedicated editor with **4+ years of experience** specializing in high-end post-production using Capcut. My focus is on delivering polished, story-driven content on time and within budget.</p>
-                </div>
-                <div class="testimonial-card">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"its_nutrow's attention to detail transformed our project. The workflow was seamless and the final video looked incredible."</p>
-                    <footer>— rosy., instagram creator</footer>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container contact-content-simple">
-                <h2>Ready to Start Your Project?</h2>
-                <p>Have an urgent project? Click below to chat directly on WhatsApp for a fast response and project discussion.</p>
-                
-                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20video%20editing%20project." 
-                   class="cta-button whatsapp-button" target="_blank">
-                   <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            <section class="text-center pt-12 pb-8">
+                <h3 class="text-3xl sm:text-4xl font-extrabold mb-4 text-white">
+                    COMMENCE ENROLLMENT PROCESS
+                </h3>
+                <p class="text-lg text-gray-400 mb-8">
+                    The terminal is open. Follow the designated channel for your registration and orientation schedule.
+                </p>
+                <a href="https://www.instagram.com/p/ClxNA9USxgp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="inline-block px-12 py-4 text-matrix-green font-bold text-xl rounded-lg border border-matrix-green/50 transition duration-300 transform start-here-gradient">
+                    <span class="animate-pulse">START HERE ></span>
                 </a>
-                <p style="margin-top: 20px;">Or, if you prefer email, reach me at: <a href="mailto:its_nutrow.com">its_nutrow.com</a></p>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 its_nutrow. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" title="Vimeo"><i class="fab fa-vimeo"></i></a>
- <a href="https://www.youtube.com/@Rise_N_Shift" title="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer>
+        </main>
+
+        <footer id="contact" class="mt-24 p-8 border-t border-electric-blue/50 bg-slate-900/60">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4 text-electric-blue uppercase">CSA Access Point</h4>
+                    <p class="text-gray-400">
+                        Department of Computer Science and Applications<br>
+                        Malda College, Malda, West Bengal, India.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4 text-electric-blue uppercase">Contact Protocol</h4>
+                    <p class="text-gray-400 mb-2">
+                        <span class="font-mono text-matrix-green">EMAIL:</span> csa.malda.college@edu.in
+                    </p>
+                    <p class="text-gray-400">
+                        <span class="font-mono text-matrix-green">PHONE:</span> +91-XXX-XXXX-XXX (Admin)
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4 text-electric-blue uppercase">connect Links</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://maldacollege.ac.in/" target="_blank" class="text-gray-300 hover:text-matrix-green transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            <span class="sr-only">Server Status</span>
+                        </a>
+                        <a href="https://www.instagram.com/granthadip_x_rez06?igsh=MTBiZm0zZGtpcmdvMg==" target="_blank" class="text-gray-300 hover:text-matrix-green transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span class="sr-only">Instagram Profile</span>
+                        </a>
+                        <a href="https://t.me/addlist/QGc3t_XR4TkzN2Nl" target="_blank" class="text-gray-300 hover:text-matrix-green transition duration-300">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <title>Telegram icon</title>
+  <path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z"/>
+</svg>
+
+    
+    </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-center mt-12 pt-6 border-t border-gray-700/50">
+                <p class="text-xs text-gray-600 font-mono">
+                    [SYSTEM LOG: DEPT_DCSA | GENERATED: 2026.01.11 | CODEBASE V.9.0]
+                </p>
+            </div>
+        </footer>
+    </div> <a href="https://t.me/code_go_0/18" target="_blank" 
+       class="logo-fab-glow fixed bottom-6 right-6 z-50 p-2 bg-dark-void rounded-full transition duration-300 transform hover:scale-110">
+        <img src="logo.png" alt="Profile Logo" class="w-10 h-10 rounded-full object-cover">
+        <span class="sr-only">Profile Link (Telegram Channel)</span>
+    </a>
+
+<script>
+        // --- Canvas Background Animation (Sci-Fi Code Rain) ---
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let columns;
+        let drops = [];
+
+        const FONT_SIZE = 14;
+        const CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-{}[]|\\:;"<>,.?/';
+        const RAIN_COLOR = '#00ff41'; // matrix-green
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            columns = Math.floor(width / FONT_SIZE);
+            drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.floor(Math.random() * height / FONT_SIZE);
+            }
+        }
+
+        function animate() {
+            // Fading trail effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.font = FONT_SIZE + 'px monospace';
+            ctx.fillStyle = RAIN_COLOR;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = CHARACTERS.charAt(Math.floor(Math.random() * CHARACTERS.length));
+                const x = i * FONT_SIZE;
+                const y = drops[i] * FONT_SIZE;
+
+                ctx.fillText(text, x, y);
+
+                if (y > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // --- Video Intro Logic ---
+        const introVideoContainer = document.getElementById('intro-video-container');
+        const introVideo = document.getElementById('intro-video');
+        const introAudio = document.getElementById('intro-audio'); 
+        const skipButton = document.getElementById('skip-button');
+        const startButton = document.getElementById('start-button');
+        const contentLayer = document.querySelector('.content-layer');
+
+        // Flag to prevent multiple transition calls
+        let isTransitioning = false; 
+
+        function cleanupAndTransition() {
+            if (isTransitioning) {
+                return;
+            }
+            isTransitioning = true;
+            
+            // 1. Stop media safely
+            try {
+                if (!introVideo.paused) {
+                    introVideo.pause();
+                }
+                if (!introAudio.paused) {
+                    introAudio.pause();
+                }
+            } catch (e) {
+                console.warn("Error pausing media during cleanup. Continuing transition.", e.message);
+            }
+            
+            // 2. Fade out the video container (using the CSS transition)
+            introVideoContainer.style.opacity = '0'; 
+            
+            // 3. After a short delay, hide the container and show the content layer
+            setTimeout(() => {
+                introVideoContainer.style.display = 'none';
+                contentLayer.style.display = 'block';
+
+                // Ensure canvas is correctly sized and animation is running
+                resizeCanvas();
+                animate();
+
+                isTransitioning = false; // Reset flag after transition is complete
+            }, 500);
+        }
+
+        function startIntroSequence() {
+            startButton.style.display = 'none';
+            skipButton.style.display = 'block';
+
+            introVideo.currentTime = 0;
+            introAudio.currentTime = 0;
+            
+            setTimeout(() => {
+                introVideo.style.opacity = '1'; 
+            }, 50);
+
+            // Play media, handling potential autoplay blocks
+            introVideo.play()
+                .then(() => {
+                    return introAudio.play();
+                })
+                .catch(error => {
+                    const errorName = error.name;
+
+                    if (errorName === 'AbortError' || errorName === 'NotAllowedError') {
+                        console.warn(`Media sequence interrupted or blocked (${errorName}). Transitioning to main content.`);
+                    } else {
+                        console.error("Unexpected media playback error:", error);
+                    }
+                    
+                    cleanupAndTransition(); 
+                });
+        }
+
+        // Attach listeners
+        introVideo.addEventListener('ended', cleanupAndTransition);
+        introVideo.addEventListener('error', cleanupAndTransition);
+        skipButton.addEventListener('click', cleanupAndTransition);
+        startButton.addEventListener('click', startIntroSequence);
+
+        window.addEventListener('resize', () => {
+            if (contentLayer.style.display !== 'none') {
+                resizeCanvas(); 
+            }
+        });
+        
+        // --- INITIAL SETUP ---
+        document.addEventListener('DOMContentLoaded', resizeCanvas); 
+    </script>
 
 </body>
 </html>
